@@ -1,0 +1,35 @@
+<h1>Hello from INDEX Action of PRODUCTS_Controller!</h1>
+<p>Index action will show all Products for us:</p>
+
+<table>
+  <thead>
+  	<tr>
+  	  <th>ID</th>
+  	  <th>Category ID</th>
+      <th>Name</th>
+      <th>Category</th>
+  	  <th>Description</th>
+  	  <th>Stock</th>
+  	  <th>Price</th>
+      <th></th>
+  	</tr>
+  </thead>
+  <tbody>
+  	<% @product.each do |product| %>
+  	  <tr>
+  	  	<td><%= product.id %></td>
+  	  	<td><%= product.category_id %></td>
+  	  	<td><%= product.name %></td>
+        <td><%= product.cat_product %></td>
+  	  	<td><%= product.description %></td>
+  	  	<td><%= product.stock %></td>
+  	  	<td><%= product.price %></td>
+        <td>
+          <%=link_to 'Show', product_path(product) %>
+          <%=link_to 'Edit', edit_product_path(product) %>
+          <%=button_to 'Destroy', product_path(product), method: :delete %>
+          </td>
+  	  </tr>
+  	<% end %>
+  </tbody>
+</table>

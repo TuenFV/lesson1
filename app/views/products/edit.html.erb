@@ -1,0 +1,36 @@
+<h1>Hello from EDIT Action of PRODUCTS_Controller!</h1>
+<p>We can edit information of selected product with Edit action.</p>
+
+<%= form_with(model: @product) do |f| %>
+
+  <div>
+  	<%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+  	<%= f.label :description %>
+  	<%= f.text_area :description %>
+  </div>
+
+  <div>
+  	<%= f.label :stock %>
+  	<%= f.number_field :stock %>
+  </div>
+
+  <div>
+  	<%= f.label :price %>
+  	<%= f.number_field :price %>
+  </div>
+
+  <div>
+  	<%= f.label 'Category' %>
+  	<%= f.collection_select :cat_product, Category.order(:name), :name, :name %>
+  </div>
+
+  <br/>
+  <div>
+  	<%= f.submit %>
+  </div>
+
+<% end %>
