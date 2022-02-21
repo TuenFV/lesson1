@@ -11,14 +11,14 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_paras)
-    @product.category_id = cat_id
+    @product.category_id = id_category
     @product.save
     
     if @product.save
       flash.now[:notice] = 'Product was added successfully!'
       redirect_to products_path
     else
-      flash.now[:error] = 'Erorr!'
+      flash.now[:error] = 'Can not add new product!'
       render :new
     end
   end
@@ -30,12 +30,13 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product.update(product_paras)
-    if @product.update(product_paras)
-      flash[:notice] = 'Product was successfully updated.'
+    @product.update(product_params)
+    
+    if @product.update(product_params)
+      flash[:notice] = "Sucess update!"
       redirect_to product_path
     else
-      flash[:warning] = 'Erorr!'
+      flash[:error] = "Can not update!"
       render :edit
     end
   end
@@ -44,21 +45,18 @@ class ProductsController < ApplicationController
     @product.destroy
     redirect_to products_path
     flash[:notice] = 'Product was successfully destroyed.'
-
   end
 
   private
-    def product_paras
-      product_paras =  params.require(:product).permit(:name , :description, :stock, :price, :category_id, :cat_product )     
+    def product_params
+      product_params =  params.require(:product).permit(:name , :description, :stock, :price, :category_id, :cat_product )     
     end
 
-    def cat_id
-      cat_id = Category.find_by(name: @product.cat_product).id
+    def id_category
+      id_category = Category.find_by(name: @product.cat_product).id
     end
 
     def set_product
       @product = Product.find(params[:id])
     end
-
-
 end

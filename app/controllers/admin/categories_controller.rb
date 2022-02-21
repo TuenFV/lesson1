@@ -10,7 +10,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(para_category)
+    @category = Category.new(params_category)
     @category.save
     
     if @category.save
@@ -27,9 +27,14 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def update
-    
-    @category.update(para_category)
-    redirect_to admin_category_path
+    @category.update(params_category)
+    if @category.update(params_category)
+      flash[:notice] = "Sucess update!"
+      redirect_to admin_category_path
+    else
+      flash[:error] = "Can not update!"
+      render :edit
+    end
   end
 
   def show
@@ -45,7 +50,7 @@ class Admin::CategoriesController < ApplicationController
       @category = Category.find(params[:id])
     end
 
-    def para_category
-      para_category = params.require(:category).permit(:name, :description)
+    def params_category
+      params_category = params.require(:category).permit(:name, :description)
     end
 end

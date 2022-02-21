@@ -3,33 +3,33 @@
 
 <table>
   <thead>
-  	<tr>
-  	  <th>ID</th>
-  	  <th>Category ID</th>
+    <tr>
+      <th>ID</th>
+      <th>Category ID</th>
       <th>Name</th>
       <th>Category</th>
-  	  <th>Description</th>
-  	  <th>Stock</th>
-  	  <th>Price</th>
+      <th>Description</th>
+      <th>Stock</th>
+      <th>Price</th>
       <th></th>
-  	</tr>
+    </tr>
   </thead>
   <tbody>
-  	<% @product.each do |product| %>
-  	  <tr>
-  	  	<td><%= product.id %></td>
-  	  	<td><%= product.category_id %></td>
-  	  	<td><%= product.name %></td>
+    <% @product.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.category_id %></td>
+        <td><%= product.name %></td>
         <td><%= product.cat_product %></td>
-  	  	<td><%= product.description %></td>
-  	  	<td><%= product.stock %></td>
-  	  	<td><%= product.price %></td>
+        <td><%= product.description %></td>
+        <td><%= product.stock %></td>
+        <td><%= product.price %></td>
         <td>
           <%=link_to 'Show', product_path(product) %>
           <%=link_to 'Edit', edit_product_path(product) %>
           <%=button_to 'Destroy', product_path(product), method: :delete %>
-          </td>
-  	  </tr>
-  	<% end %>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

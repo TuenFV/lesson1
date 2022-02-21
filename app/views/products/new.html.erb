@@ -1,38 +1,35 @@
 <h1>Hello from NEW Action of PRODUCTS_Controller!</h1>
 <p>New action will help us add a new Product:</p>
 
-<%= notice %>
-
 <%= form_with(model: @product) do |f| %>
 
   <div>
-  	<%= f.label :name %>
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
 
   <div>
-  	<%= f.label :description %>
-  	<%= f.text_area :description %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
   </div>
 
   <div>
-  	<%= f.label :stock %>
-  	<%= f.number_field :stock %>
+    <%= f.label :stock %>
+    <%= f.number_field :stock %>
   </div>
 
   <div>
-  	<%= f.label :price %>
-  	<%= f.number_field :price %>
+    <%= f.label :price %>
+    <%= f.number_field :price %>
   </div>
 
   <div>
-  	<%= f.label 'Category' %>
-  	<%= f.collection_select :cat_product, Category.order(:name), :name, :name %>
+    <%= f.label 'Category' %>
+    <%= f.collection_select :cat_product, Category.order(:name), :name, :name %>
   </div>
 
   <br/>
   <div>
-  	<%= f.submit %>
+    <%= f.submit %>
   </div>
-
 <% end %>
