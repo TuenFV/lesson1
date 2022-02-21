@@ -1,17 +1,15 @@
 <div>
-	<h1>Hello from SHOW action</h1>
+  <h1>Hello from SHOW action</h1>
 </div>
 
-<%= form_with(model: [:admin , @category]) do |f| %>
+<div>
+  <strong>Name: </strong>
+  <%= @category.name %>
+</div>
+<div>
+  <strong>Description: </strong>
+  <%= @category.description %>
+</div>
 
-  <div>
-    <%= f.label 'Category Name: '%>
-    <%= @category.name %>
-  </div>
-  <div>
-    <%= f.label :description %>:
-    <%= @category.description %>
-  </div>
-<% end %>
 <br/>
 <%=link_to 'Back', admin_categories_path(@category) %>

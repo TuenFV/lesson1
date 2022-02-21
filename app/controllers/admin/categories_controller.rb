@@ -17,7 +17,7 @@ class Admin::CategoriesController < ApplicationController
       flash[:notice] = 'Success!'
       redirect_to admin_categories_path
     else
-      flash[] = 'Error!'
+      flash.now[:error] = @category.errors.full_message
       render 'new'
     end
     
@@ -27,12 +27,11 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def update
-    @category.update(params_category)
     if @category.update(params_category)
       flash[:notice] = "Sucess update!"
       redirect_to admin_category_path
     else
-      flash[:error] = "Can not update!"
+      flash.now[:error] = @category.errors.full_message
       render :edit
     end
   end
@@ -42,6 +41,7 @@ class Admin::CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
+    flash.now[:notice] = "Category was sucessfully destroyed!"
     redirect_to admin_categories_path
   end
 
