@@ -11,14 +11,14 @@ class Admin::CategoriesController < ApplicationController
 
   def create
     @category = Category.new(params_category)
-    @category.save
     
     if @category.save
-      flash[:notice] = 'Success!'
-      redirect_to admin_categories_path
+      flash[:notice] = 'Category was successfully created!'
+      redirect_to admin_category_path(@category)
     else
-      flash.now[:error] = @category.errors.full_message
-      render 'new'
+      flash[:alert] = @category.errors.full_messages
+      redirect_to new_admin_category_path
+      debugger
     end
     
   end
@@ -28,11 +28,11 @@ class Admin::CategoriesController < ApplicationController
 
   def update
     if @category.update(params_category)
-      flash[:notice] = "Sucess update!"
+      flash[:notice] = "Category was sucessfully updated!"
       redirect_to admin_category_path
     else
-      flash.now[:error] = @category.errors.full_message
-      render :edit
+      flash[:alert] = @category.errors.full_messages
+      redirect_to edit_admin_category_path
     end
   end
 
@@ -41,7 +41,7 @@ class Admin::CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    flash.now[:notice] = "Category was sucessfully destroyed!"
+    flash[:notice] = "Category was sucessfully destroyed!"
     redirect_to admin_categories_path
   end
 
