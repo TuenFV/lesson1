@@ -17,8 +17,7 @@ class Admin::CategoriesController < ApplicationController
       redirect_to admin_category_path(@category)
     else
       flash[:alert] = @category.errors.full_messages
-      redirect_to new_admin_category_path
-      debugger
+      render :new, status: :unprocessable_entity
     end
     
   end
@@ -32,7 +31,7 @@ class Admin::CategoriesController < ApplicationController
       redirect_to admin_category_path
     else
       flash[:alert] = @category.errors.full_messages
-      redirect_to edit_admin_category_path
+      render :edit, status: :unprocessable_entity
     end
   end
 
