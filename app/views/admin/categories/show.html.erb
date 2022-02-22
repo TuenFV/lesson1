@@ -1,0 +1,15 @@
+<div>
+  <h1>Hello from SHOW action</h1>
+</div>
+
+<div>
+  <strong>Name: </strong>
+  <%= @category.name %>
+</div>
+<div>
+  <strong>Description: </strong>
+  <%= @category.description %>
+</div>
+
+<br/>
+<%=link_to 'Back', admin_categories_path(@category) %>
