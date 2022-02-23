@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   end
   
+  root 'admin/categories#index'
 end
