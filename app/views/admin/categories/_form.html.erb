@@ -1,14 +1,15 @@
 <%= form_with(model: [:admin, category], local: true) do |f| %>
 
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="mb-3" style="width: 31rem;">
+    <h6>Categorty name:</h6>
+    <%= f.text_field :name, class:"form-control" %>
   </div>
-  <div>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+  
+  <div class="mb-3" style="width: 31rem;">
+    <h6>Description:</h6>
+    <%= f.text_area :description, class:"form-control", rows:"3" %>
   </div>
-  <br/>
+  
   <div>
     <%= f.submit %>
   </div>

@@ -1,15 +1,13 @@
-<div>
-  <h1>Hello from SHOW action</h1>
+<div class="card" style="width: 31rem;">
+  <div class="card-header">
+    <strong>About this category:</strong>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @category.name %></h5>
+    <p class="card-text"><%= @category.description %></p>
+    <%= link_to 'Back', admin_categories_path, class:"btn btn-outline-light btn-sm" %>
+  </div>
 </div>
-
-<div>
-  <strong>Name: </strong>
-  <%= @category.name %>
-</div>
-<div>
-  <strong>Description: </strong>
-  <%= @category.description %>
-</div>
-
 <br/>
-<%=link_to 'Back', admin_categories_path %>
+<%= link_to 'Edit', edit_admin_category_path(@category), class:"btn btn-primary btn-sm" %>
+<%= link_to 'Destroy', admin_category_path(@category), class:"btn btn-sm btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
